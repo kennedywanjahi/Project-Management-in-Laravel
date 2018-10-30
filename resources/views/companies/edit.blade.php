@@ -2,11 +2,6 @@
 
 @section('content')
   <div class="col-md-9 col-lg-9 col-sm-9 pull-left">
-
-
-
-
-
       <!-- Example row of columns -->
       <div class="row col-md-12 col-lg-12 col-sm-12" style="background: white; margin:10px;">
             <form action="{{route('companies.update',[$company->id])}}" method="post">
@@ -17,7 +12,7 @@
                     <input placeholder="Enter a Name"
                            id="company-name"
                            required
-                           name="description"
+                           name="name"
                            spellcheck="false"
                            class="form-control"
                            value="{{$company->name}}"
@@ -51,9 +46,9 @@
           <div class="sidebar-module">
             <h4>Actions</h4>
             <ol class="list-unstyled">
-              <li><a href="/companies/{{$company->id}}/edit">Edit</a></li>
-              <li><a href="#">Delete</a></li>
-              <li><a href="#">Add User</a></li>
+              <li><a href="/companies/{{$company->id}}">View Companies</a></li>
+              <li><a href="/companies/">All Companies</a></li>
+
             </ol>
           </div>
 
