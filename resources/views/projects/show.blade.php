@@ -14,7 +14,65 @@
 
       <!-- Example row of columns -->
       <div class="row col-md-12 col-lg-12 col-sm-12" style="background: white; margin:10px;">
-        <a href="/projects/create" class="pull-right btn btn-default btn-sm">Add a Project</a>
+        <a href="/projects/create" class="pull-right btn btn-primary btn-sm">Add a Project</a>
+
+              <br>
+              <br>
+
+              <div class="row container-fluid">
+
+
+
+                <form method="post" action="{{ route('comments.store') }}">
+                                            {{ csrf_field() }}
+
+
+                                            <input type="hidden" name="commentable_type" value="App\Project">
+                                            <input type="hidden" name="commentable_id" value="{{$project->id}}">
+
+
+                                            <div class="form-group">
+                                                <label for="comment-content">Comment</label>
+                                                <textarea placeholder="Enter comment"
+                                                          style="resize: vertical"
+                                                          id="comment-content"
+                                                          name="body"
+                                                          rows="3" spellcheck="false"
+                                                          class="form-control autosize-target text-left">
+
+
+                                                          </textarea>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="comment-content">Proof of work done (Url/Photos)</label>
+                                                <textarea placeholder="Enter url or screenshots"
+                                                          style="resize: vertical"
+                                                          id="comment-content"
+                                                          name="url"
+                                                          rows="2" spellcheck="false"
+                                                          class="form-control autosize-target text-left">
+
+
+                                                          </textarea>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-primary"
+                                                       value="Submit"/>
+                                            </div>
+                                        </form>
+
+
+
+                                        </div>
+
+
+
+
+
             {{-- @foreach ($project->projects as $project)
 
                 <div class="col-lg-4 col-md-4 col-sm-4">
