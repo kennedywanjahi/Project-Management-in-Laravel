@@ -18,15 +18,31 @@
                            class="form-control"
                                         />
 
-
+                                        @if ($companies != null)
                     <input type="hidden"
+                            class="form-control"
                            name="company_id"
                            value="{{$company_id}}"
                                         />
+                                        @endif
 
 
 
                   </div>
+                  @if ($companies != null)
+
+
+                  <div class="form-group">
+                    <label for="company-content">Select Company</label>
+                    <select class="form-control" name="company_id">
+                      @foreach ($companies as $company)
+                        <option value="{{$company->id}}">{{$company->name}}</option>
+                      @endforeach
+
+
+                    </select>
+                  </div>
+                  @endif
                   <div class="form-group">
                     <label for="project-content">Description</label>
                     <textarea  placeholder="Enter a Description"

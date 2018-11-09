@@ -5,7 +5,7 @@
 <div class="col-md-6 col-lg-6 col-md-offset-3  col-lg-offset-3">
     <div class="panel panel-primary ">
       <br>
-    <div class="panel-heading">Projects<a  class="pull-right btn btn-primary btn-sm" href="/companies">
+    <div class="panel-heading">Projects<a  class="pull-right btn btn-primary btn-sm" href="/projects/create">
       <br>
     <i class="fa fa-plus-square" aria-hidden="true"></i>  Create new</a> </div>
     <div class="panel-body">
