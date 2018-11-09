@@ -13,6 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
@@ -50,14 +51,35 @@
                             </li>
                         @else
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('companies.index') }}">My Companies</a>
+                              <a class="nav-link" href="{{ route('companies.index') }}"><i class="fa fa-building" aria-hidden="true"></i> My Companies</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('projects.index') }}">Projects</a>
+                              <a class="nav-link" href="{{ route('projects.index') }}"><i class="fa fa-cogs" aria-hidden="true"></i> Projects</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('tasks.index') }}">Tasks</a>
+                              <a class="nav-link" href="{{ route('tasks.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> Tasks</a>
                           </li>
+
+                          @if (Auth::user()->role_id == 1)
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  <i class="fa fa-user" aria-hidden="true"></i>
+                                    Admin<span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+<li><a href="{{ route('projects.index') }}"><i class="fa fa-briefcase" aria-hidden="true"></i> All Projects</a></li>
+<li><a href="{{ route('users.index') }}"><i class="fa fa-user" aria-hidden="true"></i> All Users</a></li>
+<li><a href="{{ route('tasks.index') }}"><i class="fa fa-tasks" aria-hidden="true"></i> All Tasks</a></li>
+<li><a href="{{ route('companies.index') }}"><i class="fa fa-building" aria-hidden="true"></i> All Companies</a></li>
+<li><a href="{{ route('roles.index') }}"><i class="fa fa-envelope" aria-hidden="true"></i> All Roles</a></li>
+
+</ul>
+                            </li>
+
+                          @endif
+
+
 
 
                             <li class="nav-item dropdown">

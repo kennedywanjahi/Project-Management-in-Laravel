@@ -17,4 +17,13 @@ class Comment extends Model
   {
     return $this->morphTo();
   }
+  /**
+  * Return the user associated with this comment.
+  *
+  * @return array
+  */
+  public function user()
+  {
+      return $this->hasOne('\App\User', 'id', 'user_id');
+  }
 }
