@@ -48,10 +48,14 @@ class User extends Authenticatable
     {
       return $this->belongsToMany('App\Task');
     }
+    //many to many relationship
     public function projects()
     {
       return $this->belongsToMany('App\Project');
     }
+
+
+    //
     public function comments()
     {
       return $this->morphMany('App\Comment', 'commentable');

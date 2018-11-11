@@ -110,7 +110,35 @@
         @endif
               {{-- <li><a href="#">Add User</a></li> --}}
             </ol>
-          </div>
+            <hr>
+            <h4>Add Members</h4>
+            <div class="row">
+              <div class="col-lg-1-12 col-md-1-12 col-sm-12">
+                <form id="add_user" action="{{ route('projects.adduser') }}"
+                  method="POST">
+                  {{csrf_field()}}
+                <div class="input-group">
+                  <input class="form-control" name="project_id" value="{{$project->id}}" type="hidden">
+                  <input type="text" class="form-control" name="email" placeholder="Email">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" name="button"> Add</button>
+                  </span>
+                </div>
+              </form>
+
+              </div>
+
+              </div>
+
+          <hr>
+          <h4>Team Members</h4>
+          <ol class="list-unstyled">
+            @foreach ($project->users as $user)
+              <li><a href="#">{{$user->email}}</a</li>
+            @endforeach
+
+
+          </ol>
 
           {{-- <div class="sidebar-module">
             <h4>Users</h4>

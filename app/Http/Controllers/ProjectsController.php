@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\Company;
+use App\User;
+use App\ProjectUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,6 +26,40 @@ class ProjectsController extends Controller
     }
       return view('auth.login');
   }
+
+public function adduser(Request $request)
+{
+  // add user to project function
+ // take a project add a user to it;
+$project = Project::find($request->input('project_id'));
+
+
+ if (Auth::user()->id == $project->user_id) {
+
+
+   $user = User::where('email', $request->input('email'))->first();
+
+   //check if user is already added
+   $projectUser = ProjectUser::where('user_id', $user->id)
+                               ->where('project_id', $project->id)
+                               ->first();
+if ($projectUser) {
+  //if user already exists
+  return redirect()->route('projects.show', ['project'=>$project->id])
+  ->with('success', $request->input('email').' already a member of this project');
+}
+
+
+   if ($user && $project) {
+     $project->users()->attach($user->id);
+     return redirect()->route('projects.show', ['project'=>$project->id])->with('success', $request->input('email').' added successfully to project');
+   }
+ }
+return redirect()->route('projects.show', ['project'=>$project->id])->with('errors', ' error adding user');
+
+
+
+}
 
   /**
    * Show the form for creating a new resource.

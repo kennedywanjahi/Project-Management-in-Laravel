@@ -13,7 +13,7 @@ class Project extends Model
       'user_id',
       'days',
   ];
-  public function user()
+  public function users()
   {
     return $this->belongsToMany('App\User');
   }
